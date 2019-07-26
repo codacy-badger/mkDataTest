@@ -33,8 +33,8 @@
 - [Laravel](https://laravel.com/) e suas dependências
 - [Select2](https://select2.org/)
 - [FontAwesome](https://fontawesome.com/)
-- [jQuery FileStyle](http://markusslima.github.io/jquery-filestyle/options.html)
-
+- [laravel-pt-BR-localization](https://github.com/lucascudo/laravel-pt-BR-localization)
+- [jQuery Mask Plugin](https://igorescobar.github.io/jQuery-Mask-Plugin/)
 
 ## Autores
 
