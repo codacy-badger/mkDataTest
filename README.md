@@ -35,6 +35,7 @@
 - [FontAwesome](https://fontawesome.com/)
 - [laravel-pt-BR-localization](https://github.com/lucascudo/laravel-pt-BR-localization)
 - [jQuery Mask Plugin](https://igorescobar.github.io/jQuery-Mask-Plugin/)
+- [toastr](https://github.com/CodeSeven/toastr)
 
 ## Autores
 
