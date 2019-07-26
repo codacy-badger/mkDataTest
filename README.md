@@ -7,7 +7,7 @@
 - Em seu pacote de servidor preferido (para o desenvolvimento foi utilizado o XAMPP) ative o MySQL (é possível também utilizar um servidor real, apenas adaptando os passos aplicáveis a tal);
 - Abra o PHPMyAdmin e crie uma database com o nome desejado (para o desenvolvimento foi criada uma database entitulada "mkdata");
 - Vá ao projeto do Laravel e altere o arquivo [.env](https://github.com/laravel/laravel/blob/master/.env.example) com as informações referentes a database criada;
-- Abra um novo terminal (prompt de comando ou PowerShell), acesse a pasta na qual o projeto se encontra e digite os comandos
+- Abra um novo terminal (prompt de comando ou PowerShell), acesse a pasta na qual o projeto se encontra e digite os comandos:
   ```shell
   $ php artisan migrate
   ```
