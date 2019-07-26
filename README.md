@@ -26,7 +26,7 @@
 
 ## Screenshots
 
-![https://raw.githubusercontent.com/MarcioCamara/mkDataTest/master/__screenshots/imagem_1.png]
+![Alt Text](https://raw.githubusercontent.com/MarcioCamara/mkDataTest/master/__screenshots/imagem_1.png)
 
 ## Desenvolvido utilizando
 
