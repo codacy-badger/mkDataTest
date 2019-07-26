@@ -26,7 +26,7 @@
 
 ## Screenshots
 
-![](caminho até a imagem)
+![https://github.com/MarcioCamara/mkDataTest/blob/master/__screenshots/imagem_1.png]
 
 ## Desenvolvido utilizando
 
