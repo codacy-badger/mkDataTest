@@ -16,6 +16,8 @@
                         <form method="POST" action="{{ route('users.saveEdit') }}">
                             @csrf
 
+                            <input type="hidden" name="user_id" value="{{ $user->id }}"/>
+
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
@@ -51,7 +53,7 @@
                                 <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('CPF') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="@if($user){{ $user->cpf }}@else{{ old('cpf') }}@endif" required autocomplete="cpf">
+                                    <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="@if($user){{ $user->cpf }}@else{{ old('cpf') }}@endif" autocomplete="cpf">
 
                                     @error('cpf')
                                     <span class="invalid-feedback" role="alert">
@@ -65,7 +67,7 @@
                                 <label for="cnpj" class="col-md-4 col-form-label text-md-right">{{ __('CNPJ') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="cnpj" type="text" class="form-control @error('cnpj') is-invalid @enderror" name="cnpj" value="@if($user){{ $user->cnpj }}@else{{ old('cnpj') }}@endif" required autocomplete="cnpj">
+                                    <input id="cnpj" type="text" class="form-control @error('cnpj') is-invalid @enderror" name="cnpj" value="@if($user){{ $user->cnpj }}@else{{ old('cnpj') }}@endif" autocomplete="cnpj">
 
                                     @error('cnpj')
                                     <span class="invalid-feedback" role="alert">
@@ -93,7 +95,7 @@
                                 <label for="ie" class="col-md-4 col-form-label text-md-right">{{ __('IE') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="ie" type="text" class="form-control @error('ie') is-invalid @enderror" name="ie" value="@if($user){{ $user->name }}@else{{ old('ie') }}@endif" autocomplete="ie">
+                                    <input id="ie" type="text" class="form-control @error('ie') is-invalid @enderror" name="ie" value="@if($user){{ $user->ie }}@else{{ old('ie') }}@endif" autocomplete="ie">
 
                                     @error('ie')
                                     <span class="invalid-feedback" role="alert">
@@ -125,7 +127,7 @@
                                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefone') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone[]" value="@if($user){{ $user->phone }}@else{{ old('phone') }}@endif" autocomplete="phone">
+                                    <input id="phone" type="text" class="phone form-control @error('phone') is-invalid @enderror" name="phone" value="@if($user){{ $user->phone }}@else{{ old('phone') }}@endif" autocomplete="phone">
 
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -139,7 +141,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Senha') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
 
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -153,7 +155,7 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Senha') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
                                 </div>
                             </div>
 
@@ -173,6 +175,7 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
     <script src="{{ asset('js/register.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 @endsection

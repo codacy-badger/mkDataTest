@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Home')
 
 @section('styles')
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">

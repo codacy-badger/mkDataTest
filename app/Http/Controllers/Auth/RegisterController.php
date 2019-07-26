@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Group;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -38,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-
+        $this->middleware('guest');
     }
 
     //Override the showRegistrationForm function of the original "RegistersUsers" trait for pass variables to the form view
@@ -57,13 +59,25 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'type' => ['required'],
-            'cpf' => ['string', 'max:14', 'unique:users'],
-            'cnpj' => ['string', 'max:14', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed']
-        ]);
+        if ($data['cnpj']) {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'type' => ['required'],
+                'cnpj' => ['max:18', 'unique:users'],
+                'ie' => ['max:9'],
+                'password' => ['required', 'string', 'min:8', 'confirmed']
+            ]);
+        }
+        else
+        {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'type' => ['required'],
+                'cpf' => ['max:14', 'unique:users'],
+                'rg' => ['max:12'],
+                'password' => ['required', 'string', 'min:8', 'confirmed']
+            ]);
+        }
     }
 
     /**
@@ -74,14 +88,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $cnpj = $data['cnpj'] ? $data['cnpj'] : 'N/A';
+        $cpf = $data['cpf'] ? $data['cpf'] : 'N/A';
+        $ie = $data['ie'] ? $data['ie'] : 'N/A';
+        $rg = $data['rg'] ? $data['rg'] : 'N/A';
+
         return User::create([
             'name' => $data['name'],
-            'cpf' => $data['cpf'],
-            'cnpj' => $data['cnpj'],
-            'rg' => $data['rg'],
-            'ie' => $data['ie'],
-            'group' => $data['group'],
-            'phone' => $data['phone'], //verficar pois será um json
+            'type' => $data['type'],
+            'cpf' => $cpf,
+            'cnpj' => $cnpj,
+            'rg' => $rg,
+            'ie' => $ie,
+            'group_id' => $data['group'],
+            'phone' => json_encode($data['phone']),
             'password' => Hash::make($data['password'])
         ]);
     }

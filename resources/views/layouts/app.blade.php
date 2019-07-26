@@ -22,13 +22,16 @@
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/23480085ba.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+
     @yield('styles')
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -85,6 +88,30 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+        @if(session()->has('message'))
+            let type = "{{ session()->get('alert-type', 'info') }}";
+
+            switch(type){
+                case 'info':
+                    toastr.info("{{ session()->get('message') }}");
+                    break;
+
+                case 'warning':
+                    toastr.warning("{{ session()->get('message') }}");
+                    break;
+
+                case 'success':
+                    toastr.success("{{ session()->get('message') }}");
+                    break;
+
+                case 'error':
+                    toastr.error("{{ session()->get('message') }}");
+                    break;
+            }
+        @endif
+    </script>
 
     @yield('scripts')
 </body>

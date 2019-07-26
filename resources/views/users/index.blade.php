@@ -38,10 +38,10 @@
                         <th>{{ $user->ie }}</th>
                         <th>{{ date_format($user->created_at, 'd/m/Y') }}</th>
                         <th>{{ $user->group['name'] }}</th>
-                        <th>@if($user->status === 0){{ "Inativo" }}@else{{ "Ativo" }}@endif</th>
+                        <th data-id="{{ $user->id }}">@if($user->status === 0){{ "Inativo" }}@else{{ "Ativo" }}@endif</th>
                         <th>{{ $user->phone }}</th>
                         <th style="white-space: nowrap; width: 100%;">
-                            <a id="alter_status" class="@if($user->status === 0){{ 'text-danger' }}@else{{ 'text-success' }}@endif" href="javascript:void(0);"><i class="fas fa-power-off"></i></a>
+                            <a data-user="{{ $user->id }}" class="alter_status @if($user->status === 0){{ 'text-danger' }}@else{{ 'text-success' }}@endif" href="javascript:void(0);"><i class="fas fa-power-off"></i></a>
                             <a class="text-primary" href="{{ route('users.edit', $user->id) }}"><i class="fas fa-edit"></i></a>
                         </th>
                     </tr>

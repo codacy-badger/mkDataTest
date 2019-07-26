@@ -13,10 +13,11 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function () {
     Route::get('users', 'UsersController@index')->name('users.list');
     Route::get('users/edit/{id}', 'UsersController@edit')->name('users.edit');
-    Route::get('users/save-edit', 'UsersController@saveEdit')->name('users.saveEdit');
+    Route::post('users/save-edit', 'UsersController@saveEdit')->name('users.saveEdit');
+    Route::post('users/alter-status', 'UsersController@alterStatus')->name('users.alterStatus');
 });
